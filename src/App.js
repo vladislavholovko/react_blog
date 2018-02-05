@@ -15,7 +15,9 @@ const BasicExample = () => (
         <li><Link to="/galeria">Galeria</Link></li>
         <li><Link to="/users">Users</Link></li>
       </ul>
+      
       <hr/>
+      
       <Route exact path="/" component={MyBlog}/>
       <Route path="/galeria" component={Galeria}/>
       <Route path="/users" component={Users}/>
