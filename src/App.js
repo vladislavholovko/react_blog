@@ -6,6 +6,7 @@ import Galeria from './Galeria/Galeria';
 import Users from './Users/Users';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 
+
 const App = () => (
   <Router>
     <div className = "container-flex ">
