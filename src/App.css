@@ -1,6 +1,28 @@
-.App {
+.MenuLists {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 20px;
+  list-style-type:none;
+}
+
+.List {
+margin: 0 15px;
+text-decoration: none;
+color: black;
+}
+
+.List:hover {
+  color: #bcae9c;
+
+}
+
+
+/* .App {
   text-align: center;
 }
+
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -25,6 +47,4 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
-
-
+} */
