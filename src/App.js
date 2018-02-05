@@ -30,7 +30,7 @@ export default class App extends Component {
 
     return (
       <div className='container'>
-        <h1>App</h1>
+        <h1>Application</h1>
         <ul>
           <li><a href='#/admin'>Admin</a></li>
           <li><a href='#/genre'>Genre</a></li>
