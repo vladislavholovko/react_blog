@@ -1,43 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Admin from './Components/admin';
-import Genre from './Components/Genre'
-import Home from './Components/Home';
+import MyBlog from './Blog/Blog'; 
+import Galeria from './Galeria/Galeria';
+import Users from './Users/Users';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
-export default class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      route: window.location.hash.substr(1)
-    }
-  }
-  componentDidMount() {
-    window.addEventListener('hashchange', () => {
-      this.setState({
-        route: window.location.hash.substr(1)
-      })
-    })
-  }
-  render() {
-    let Child
 
-    switch (this.state.route) {
-      case '/admin': Child = Admin; break;
-      case '/genre': Child = Genre; break;
-      default: Child = Home;
-    }
+const BasicExample = () => (
+  <Router>
+    <div>
+      <ul>
+        <li><Link to="/">MyBlog</Link></li>
+        <li><Link to="/galeria">Galeria</Link></li>
+        <li><Link to="/users">Users</Link></li>
+      </ul>
+      <hr/>
+      <Route exact path="/" component={MyBlog}/>
+      <Route path="/galeria" component={Galeria}/>
+      <Route path="/users" component={Users}/>
+    </div>
+  </Router>
+)
 
-    return (
-      <div className='container'>
-        <h1>App</h1>
-        <ul>
-          <li><a href='#/admin'>Admin</a></li>
-          <li><a href='#/genre'>Genre</a></li>
-        </ul>
-        <Child />
-      </div>
-    )
-
-  }
-}
+export default BasicExample;
