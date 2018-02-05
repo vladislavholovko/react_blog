@@ -1,10 +1,10 @@
 import React from 'react';
 
 export default class Galeria extends React.Component {
-    render () {
+    render() {
         return (
             <div>
-                <h1>Це все моя галарея</h1>
+                <h1>Це моя галарея</h1>
             </div>
         );
     }
