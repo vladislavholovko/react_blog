@@ -4,7 +4,7 @@ export default class Blog extends React.Component {
     render () {
         return (
             <div>
-                <h1>Це мій блог</h1>
+                <h1>Це мій блог kugjkjm</h1>
             </div>
         );
     }
