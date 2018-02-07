@@ -71,7 +71,7 @@ componentDidMount() {
       return(
         <div key={i}>
           <ul>
-            <li className="post-text">{res.id}</li>
+            {/* <li className="post-text">{res.id}</li> */}
             <li className="post-title">{res.title}</li>
             <li className="post-text">{res.body}</li>  
           </ul>
@@ -81,7 +81,7 @@ componentDidMount() {
       return(
         <div key={i}>
           <ul>
-            <li className="post-text">{res.id}</li>
+            {/* <li className="post-text">{res.id}</li> */}
             <li className="post-title">{res.title}</li>
             <li className="post-text">{res.body}</li>  
           </ul>
@@ -91,16 +91,16 @@ componentDidMount() {
     return (
       <div className="Blog">
         <div className="row">  
-          <div className="sort-container">
+          <div className="sort-container col-lg-4">
             <h3>Sort posts</h3>
               <button className="id-sort" onClick={() => this.sortId()}>id</button>
               <button className="title-sort" onClick={() => this.sortTitle()}>title</button>
           </div>
-          <div className="filter-container">
+          <div className="filter-container col-lg-4">
             <h3>Search for body</h3>
             <input type="text" placeholder="Search" onChange={this.filterList}/>
           </div>
-          <div className="list-refresh">
+          <div className="list-refresh col-lg-4">
             <h3>Refresh list</h3>
             <button className="refresh-button" onClick={() => this.componentDidMount()}>&#128472;</button>
           </div>
@@ -110,7 +110,5 @@ componentDidMount() {
     );
   }
 }
-
-
 
 export default Blog;
