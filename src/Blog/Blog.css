@@ -1,0 +1,32 @@
+.post-title {
+    font-size: 20px;
+    list-style: none;
+}
+  
+.post-text {
+    font-size: 16px;
+    list-style: none;
+}
+
+.post-title:first-letter {
+    text-transform: uppercase;
+}
+
+.post-text:first-letter {
+    text-transform: uppercase;
+}
+
+.sort-container {
+    padding: 40px;
+    text-align: center;
+}
+
+.filter-container {
+    padding: 40px;
+    text-align: center;
+}
+
+.list-refresh {
+    padding: 40px;
+    text-align: center;
+}
