@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 import Blog from './Blog/Blog';
 import Galeria from './Galeria/Galeria';

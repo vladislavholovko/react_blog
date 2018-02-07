@@ -1,27 +1,5 @@
 import React from 'react';
-import {withGoogleMap, GoogleMap, Marker} from 'react-google-maps';
-
-const MyGoogleMapComponent = withGoogleMap(props => (
-    <GoogleMap
-        defaultZoom={8}
-        defaultCenter={{lat: -34.397, lng: 150.644}}
-    >
-        <Marker
-            position={{lat: -34.397, lng: 150.644}}
-        />
-    </GoogleMap>
-));
-// const MyGoogleMapComponent = withGoogleMap(props => (
-//     <GoogleMap
-//         defaultZoom={8}
-//         defaultCenter={{lat: -34.397, lng: 150.644}}
-//     >
-//         <Marker
-//             position={{lat: -34.397, lng: 150.644}}
-//         />
-//     </GoogleMap>
-// ));
-
+import {MyGoogleMapComponent} from './Map';
 
 export default class Users extends React.Component {
     constructor() {
@@ -29,7 +7,6 @@ export default class Users extends React.Component {
         this.state = {users:[]};
         this.allUsers = this.allUsers.bind(this);
     };
-
 
     allUsers () {
         return this.state.users.map((value, i) => {
@@ -86,20 +63,27 @@ export default class Users extends React.Component {
     }
 
     render() {
+        let geolist=[];
+        this.state.users.map(value => {
+            geolist.push(value.address.geo)
+        });
+        console.log(geolist);
+
         return (
             <div>
                 <div  className="d-flex justify-content-center m-3">
                     <h1>Users list</h1>
                 </div>
+                <div>
+                    <MyGoogleMapComponent geolist = {geolist} containerElement={<div style={{height: '500px'}}/>} mapElement={<div style={{height: '500px'}}/>}/>
+                    {/*<MyGoogleMapComponent Geo={Geo} containerElement={<div style={{height: '500px'}}/>} mapElement={<div style={{height: '500px'}}/>}/>*/}
+                </div>
                 <div className="d-flex flex-wrap justify-content-between m-2">
                     {this.allUsers()}
                 </div>
-                <div>
-                    <MyGoogleMapComponent containerElement={<div style={{height: '500px'}}/>} mapElement={<div style={{height: '500px'}}/>}/>
-                </div>
             </div>
         );
-   }
+    }
 
     componentDidMount() {
         fetch('https://jsonplaceholder.typicode.com/users')
@@ -107,4 +91,3 @@ export default class Users extends React.Component {
             .then(data => {this.setState({users: data})})
     };
 }
-
