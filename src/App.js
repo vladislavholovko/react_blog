@@ -1,29 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import MyBlog from './Blog/Blog'; 
+import Blog from './Blog/Blog';
 import Galeria from './Galeria/Galeria';
 import Users from './Users/Users';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 
-
-const BasicExample = () => (
-  <Router>
-    <div className = "Container">
-      <div className = "MenuContainer">
-          <ul className = "MenuLists">
-            <li><Link className = "List" to="/">MyBlog</Link></li>
-            <li><Link className = "List" to="/galeria">Galeria</Link></li>
-            <li><Link className = "List" to="/users">Users</Link></li>
-          </ul>
+const App = () => (
+    <Router>
+        <div className="container-fluid">
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <div className="collapse navbar-collapse" id="navbarNav">
+                    <ul className="navbar-nav ">
+                        <li className="nav-item"><Link className="nav-link" to="/">Blog</Link></li>
+                        <li className="nav-item"><Link className="nav-link" to="/galeria">Galeria</Link></li>
+                        <li className="nav-item"><Link className="nav-link" to="/users">Users</Link></li>
+                    </ul>
+                </div>
+            </nav>
+            <Route exact path="/" component={Blog}/>
+            <Route path="/galeria" component={Galeria}/>
+            <Route path="/users" component={Users}/>
         </div>
-        <hr/>
-        
-        <Route exact path="/" component={MyBlog}/>
-        <Route path="/galeria" component={Galeria}/>
-        <Route path="/users" component={Users}/>
-    </div>
-  </Router>
+    </Router>
 )
 
-export default BasicExample;
+export default App;
+
