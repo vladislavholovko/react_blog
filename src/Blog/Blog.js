@@ -12,14 +12,17 @@ class Blog extends Component {
     this.filterList = this.filterList.bind(this);
   }
 
-componentDidMount() {
-
-  fetch('https://jsonplaceholder.typicode.com/posts/')
+  getData(){
+    fetch('https://jsonplaceholder.typicode.com/posts/')
   .then(response => {
     return response.json();
   }).then(data => {
     this.setState({posts: data},()=>console.log("state", this.state.posts));
     })
+  }
+
+  componentDidMount() {
+    this.getData();
   }
 
   sortTitle(){
@@ -53,10 +56,10 @@ componentDidMount() {
   }
   
   filterList(e) {
-    let inputValue = e.target.value;
+    let inputValue = (e.target.value).toLowerCase();
     let posts = this.state.posts;
     let searchResult = posts.filter(function(el){
-      let searchArr = el.body;
+      let searchArr = (el.body).toLowerCase();
       let res = searchArr.indexOf(inputValue) !== -1;
       return res;
     });
@@ -98,11 +101,16 @@ componentDidMount() {
           </div>
           <div className="filter-container col-lg-4">
             <h3>Search for body</h3>
-            <input type="text" placeholder="Search" onChange={this.filterList}/>
+            <input value={this.state.searchInput} type="text" placeholder="Search" onChange={this.filterList}/>
           </div>
           <div className="list-refresh col-lg-4">
             <h3>Refresh list</h3>
-            <button className="refresh-button" onClick={() => this.componentDidMount()}>&#128472;</button>
+            <button className="refresh-button" onClick={() => {
+                this.getData()
+                this.setState({
+                  searchInput:''
+                })
+              }}>&#128472;</button>
           </div>
         </div>  
         {posts}        
