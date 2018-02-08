@@ -1,5 +1,4 @@
 import React from 'react';
-import Users from "../Users/Users";
 
 export default class Blog extends React.Component {
     render () {
@@ -10,6 +9,3 @@ export default class Blog extends React.Component {
         );
     }
 }
-
-
-console.log(Blog);

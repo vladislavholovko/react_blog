@@ -1,7 +1,7 @@
 import React from 'react';
 import {MyGoogleMapComponent} from './Map';
 
-export default class Users extends React.Component {
+export default class ImportUsers extends React.Component {
     constructor() {
         super();
         this.state = {users:[]};
@@ -72,9 +72,13 @@ export default class Users extends React.Component {
     render() {
         let geolist=[];
         this.state.users.map(value => {
-            geolist.push(value.address.geo)
+            let info = {
+                lat : value.address.geo.lat,
+                lng : value.address.geo.lng,
+                name : value.name
+            };
+            return geolist.push(info);
         });
-        console.log(geolist);
 
         return (
             <div>
