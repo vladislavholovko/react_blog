@@ -79,7 +79,6 @@ export default class Galeria extends React.Component {
                 </div>
             )
         });
-        console.log(finD)
         return (
             <div>
                 <Modal open={this.state.modalView} onClose={()=> this.setState({modalView:false})} little>
