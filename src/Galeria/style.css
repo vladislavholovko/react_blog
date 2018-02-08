@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ul li{
     list-style: none;
     display: inline;
@@ -5,3 +6,12 @@ ul li{
 .img_g:hover {
     cursor: pointer;
 }
+=======
+ul li{
+    list-style: none;
+    display: inline;
+}
+.img_g:hover {
+    cursor: pointer;
+}
+>>>>>>> 2cb224577d52773007fda23bdd4bd54f46a60516
