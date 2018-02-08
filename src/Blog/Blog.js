@@ -56,11 +56,11 @@ class Blog extends Component {
   }
   
   filterList(e) {
-    let inputValue = (e.target.value).toLowerCase();
+    let inputValue = e.target.value;
     let posts = this.state.posts;
     let searchResult = posts.filter(function(el){
-      let searchArr = (el.body).toLowerCase();
-      let res = searchArr.indexOf(inputValue) !== -1;
+      let searchArr = el.body;
+      let res = searchArr.indexOf(inputValue.toLowerCase()) !== -1;
       return res;
     });
   this.setState({
