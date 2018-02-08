@@ -11,23 +11,9 @@ export default class Galeria extends React.Component {
             photos: [],
             finallyData: [],
             modalView: false,
-            bigImage: ''
+            bigImage: '',
+            select: '',
         };
-    }
-
-    sortTitle() {
-        let albums = this.state.albums;
-        albums.sort((a, b) => {
-            if (a.title > b.title) {
-                return 1;
-            }
-            if (a.title < b.title) {
-                return -1;
-            }
-            return 0;
-        });
-        console.log(albums);
-        this.setState({finD: albums})
     }
 
     refresh() {
@@ -51,12 +37,20 @@ export default class Galeria extends React.Component {
 
     render() {
         let finallyData = [];
-        for (let i = 0; i < this.state.albums.length; i++) {
+        let album = this.state.albums;
+        if(this.state.select !== ''){
+            album = album.filter((el)=>{
+                let a = el.id.toString();
+                let b = this.state.select;
+                return a === b;
+            });
+        }
+        for (let i = 0; i < album.length; i++) {
             for (let j = 0; j < this.state.photos.length; j++) {
-                if (this.state.photos[j].albumId === this.state.albums[i].id) {
+                if (this.state.photos[j].albumId === album[i].id) {
                     finallyData.push({
-                        // id: this.state.albums[i].id,
-                        title: this.state.albums[i].title,
+                        id: album[i].id,
+                        title: album[i].title,
                         img: this.state.photos[j].thumbnailUrl,
                         imgF: this.state.photos[j].url,
                         subtitle: this.state.photos[j].title,
@@ -65,7 +59,6 @@ export default class Galeria extends React.Component {
                 }
             }
         }
-        console.log(finallyData);
         let finD = finallyData.map((photo, i) => {
             return (
                 <div key={i} className="col-3">
@@ -82,15 +75,23 @@ export default class Galeria extends React.Component {
                 </div>
             )
         });
+        let listF = this.state.albums.map((album, i)=> {
+            return(
+                 <option key={i} value={album.id}>{album.title}</option>
+            )
+            });
+        console.log('list',listF)
         return (
             <div>
                 <Modal open={this.state.modalView} onClose={() => this.setState({modalView: false})} little>
                     <img alt="Img" src={this.state.bigImage}/>
                 </Modal>
                 <br/>
-                <div>
-                    <button onClick={() => this.sortTitle()} className="btn btn-light col-5">Filter</button>
-                    <button onClick={() => this.refresh()} className="btn btn-light offset-2 col-5">Refresh</button>
+                <div className="row">
+                    <select className="offset-4 col-5 form-control" onChange={(e)=>this.setState({select:e.target.value})}>
+                        <option value={''}>All albums</option>
+                    {listF}
+                    </select>
                 </div>
                 <br/><br/>
                 <div className="row">
