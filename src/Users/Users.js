@@ -17,7 +17,7 @@ export default class ImportUsers extends React.Component {
     allUsers () {
         return this.state.users.map((value, i) => {
             return (
-                <div key={i} className="border rounded m-1 my-2 " style={{width: "32%", backgroundColor: "#e2e2e2"}}>
+                <div key={i} className="border rounded my-2 " style={{width: "33%", backgroundColor: "#e2e2e2"}}>
                     <div className="d-flex justify-content-center">
                         <img src="http://somnienghr.com/images/employees/icon-user.png" className="border border-secondary rounded-circle m-2 w-25 h-25" />
                     </div>
@@ -25,7 +25,7 @@ export default class ImportUsers extends React.Component {
                     <hr className="w-50"/>
 
                     <div className="m-1 d-flex flex-row justify-content-between">
-                        <div className="mx-1"><b>Username:</b> {value.username} 	&#x2714;</div>
+                        <div className="mx-1"><b>Username:</b> <small>{value.username}</small></div>
                         <div className="mx-1"><b>&#x2709; </b>{value.email}</div>
                     </div>
                     <div className="m-1 d-flex flex-row justify-content-between">
