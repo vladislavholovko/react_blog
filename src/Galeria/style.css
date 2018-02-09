@@ -1,0 +1,10 @@
+ul li{
+    list-style: none;
+    display: inline;
+}
+.img_g:hover {
+    cursor: pointer;
+}
+.list{
+    width: 100px;
+}
